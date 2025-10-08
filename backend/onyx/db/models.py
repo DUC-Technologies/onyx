@@ -145,6 +145,15 @@ class OAuthAccount(SQLAlchemyBaseOAuthAccountTableUUID, Base):
     refresh_token: Mapped[str] = mapped_column(Text, nullable=False)  # type: ignore
 
 
+class Validator__UserGroup(Base):
+    __tablename__ = "validator__user_group"
+
+    validator_id: Mapped[int] = mapped_column(ForeignKey("validator.id"), primary_key=True)
+    user_group_id: Mapped[int] = mapped_column(
+        ForeignKey("user_group.id"), primary_key=True
+    )
+
+
 class User(SQLAlchemyBaseUserTableUUID, Base):
     oauth_accounts: Mapped[list[OAuthAccount]] = relationship(
         "OAuthAccount", lazy="joined", cascade="all, delete-orphan"
@@ -218,8 +227,8 @@ class User(SQLAlchemyBaseUserTableUUID, Base):
         "UserFolder", back_populates="user"
     )
     files: Mapped[list["UserFile"]] = relationship("UserFile", back_populates="user")
-    validators: Mapped[list["Validator"]] = relationship(
-        "Validator", back_populates="user"
+    owned_validators: Mapped[list["Validator"]] = relationship(
+        "Validator", back_populates="user", foreign_keys="Validator.user_id"
     )
 
     @validates("email")
@@ -1198,20 +1207,29 @@ class Validator(Base):
     )
     config: Mapped[dict[str, Any]] = mapped_column(postgresql.JSONB(), nullable=False)
 
+    # для публичного доступа
+    is_public: Mapped[bool] = mapped_column(Boolean, nullable=False, default=True)
+
     created_at: Mapped[datetime.datetime] = mapped_column(
         DateTime(timezone=True), server_default=func.now()
     )
     updated_at: Mapped[datetime.datetime] = mapped_column(
-        DateTime(timezone=True), server_default=func.now()
+        DateTime(timezone=True), onupdate=func.now(), server_default=func.now()
     )
 
-    user: Mapped[User | None] = relationship("User", back_populates="validators")
+    # cвязь с пользователем-владельцем
+    user: Mapped[User | None] = relationship("User", back_populates="owned_validators", foreign_keys=[user_id])
     personas: Mapped[list["Persona"]] = relationship(
         "Persona",
         secondary="persona__validator",
         back_populates="validators"
     )
 
+    groups: Mapped[list["UserGroup"]] = relationship(
+        "UserGroup",
+        secondary=Validator__UserGroup.__table__,
+        back_populates="validators",
+    )
 
 """
 Messages Tables

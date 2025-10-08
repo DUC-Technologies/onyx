@@ -37,6 +37,7 @@ from onyx.db.models import UserFile
 from onyx.db.models import UserFolder
 from onyx.db.models import UserGroup
 from onyx.db.models import Validator
+from onyx.db import crud_validator
 from onyx.db.notification import create_notification
 from onyx.server.features.persona.models import FullPersonaSnapshot
 from onyx.server.features.persona.models import PersonaSharedNotificationData
@@ -516,16 +517,15 @@ def upsert_persona(
         if not user_folders and user_folder_ids:
             raise ValueError("user_folders not found")
 
-    # Запрос и выдача объектов Validator по переданным id
+    # Запрос и выдача объектов Validator по переданным id с проверкой прав доступа
     validators = None
     if validator_ids is not None:
-        validators = (
-            db_session.query(Validator)
-            .filter(Validator.id.in_(validator_ids))
-            .all()  # загружаем объекты Validator по переданным validator_ids
+        validators = crud_validator.get_validators_by_ids_for_user(
+            db_session=db_session,
+            validator_ids=validator_ids,
+            user=user,
+            get_editable=False,
         )
-        if not validators and validator_ids:  # проверка, что все запрошенные валидаторы существуют
-            raise ValueError("validators not found")
 
     # Fetch and attach prompts by IDs
     prompts = None

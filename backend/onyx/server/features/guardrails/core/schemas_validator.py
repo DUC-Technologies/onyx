@@ -21,6 +21,11 @@ class ValidatorOwner(BaseModel):
     )
 
 
+class ValidatorGroup(BaseModel):
+    id: int
+    name: str
+
+
 class ValidatorCreate(BaseModel):
     """Схема для запроса к API при создании экземпляра валидатора"""
 
@@ -39,6 +44,13 @@ class ValidatorCreate(BaseModel):
         description="Настройки валидатора в формате JSON",
         examples=[{"pii_entities": ["EMAIL_ADDRESS", "PHONE_NUMBER", "CREDIT_CARD"]}],
     )
+    is_public: bool = Field(
+        default=True, description="Является ли валидатор публичным"
+    )
+    groups: list[int] | None = Field(
+        default=None, description="Список ID групп для приватного доступа"
+    )
+
 
 
 class ValidatorUpdate(BaseModel):
@@ -56,6 +68,13 @@ class ValidatorUpdate(BaseModel):
         description="Настройки валидатора в формате JSON",
         examples=[{"pii_entities": ["EMAIL_ADDRESS", "PHONE_NUMBER", "CREDIT_CARD"]}],
     )
+    is_public: bool = Field(
+        default=True, description="Является ли валидатор публичным"
+    )
+    groups: list[int] | None = Field(
+        default=None, description="Список ID групп для приватного доступа"
+    )
+
 
 
 class ValidatorResponse(BaseModel):
@@ -79,6 +98,10 @@ class ValidatorResponse(BaseModel):
         description="Настройки валидатора в формате JSON",
         examples=[{"pii_entities": ["EMAIL_ADDRESS", "PHONE_NUMBER", "CREDIT_CARD"]}],
     )
+
+    is_public: bool
+    groups: list[ValidatorGroup]
+
     created_at: datetime = Field(
         description="Дата создания валидатора",
         examples=["2025-10-06 15:25:15.695 +0300"]
@@ -90,6 +113,13 @@ class ValidatorResponse(BaseModel):
 
     @classmethod
     def from_model(cls, validator: Validator) -> "ValidatorResponse":
+        # Получаем список групп, которым предоставлен доступ
+        shared_groups = (
+            [ValidatorGroup(id=group.id, name=group.name) for group in validator.groups]
+            if validator.groups
+            else []
+        )
+
         return ValidatorResponse(
             owner=(
                 ValidatorOwner(id=validator.user_id, email=validator.user.email)
@@ -101,6 +131,8 @@ class ValidatorResponse(BaseModel):
             description=validator.description,
             validator_type=validator.validator_type,
             config=validator.config,
+            is_public=validator.is_public,
+            groups=shared_groups,
             created_at=validator.created_at,
             updated_at=validator.updated_at,
         )
