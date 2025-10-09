@@ -2298,6 +2298,13 @@ class UserGroup(Base):
         secondary=Credential__UserGroup.__table__,
     )
 
+    # Guardrails validators
+    validators: Mapped[list["Validator"]] = relationship(
+        "Validator",
+        secondary=Validator__UserGroup.__table__,
+        back_populates="groups"
+    )
+
 
 """Tables related to Token Rate Limiting
 NOTE: `TokenRateLimit` is partially an MIT feature (global rate limit)
