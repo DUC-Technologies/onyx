@@ -1,0 +1,26 @@
+validators:
+  - id: -2
+    name: "Валидатор персональных данных"
+    description: "Обнаружение и маскирование персональных данных (email, тел. номера, кредитные карты..)"
+    validator_type: "DETECT_PII"
+    config:
+      pii_entities:
+        - "EMAIL_ADDRESS"
+        - "PHONE_NUMBER"
+        - "DOMAIN_NAME"
+        - "IP_ADDRESS"
+        - "DATE_TIME"
+        - "LOCATION"
+        - "PERSON"
+        - "URL"
+        - "CREDIT_CARD"
+        - "CRYPTO"
+        - "IBAN_CODE"
+        - "NRP"
+        - "MEDICAL_LICENSE"
+        - "US_BANK_NUMBER"
+        - "US_DRIVER_LICENSE"
+        - "US_ITIN"
+        - "US_PASSPORT"
+        - "US_SSN"
+    is_public: true
