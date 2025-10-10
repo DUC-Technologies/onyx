@@ -129,7 +129,6 @@ def get_validator_by_id(
         db_session=db_session,
         validator_id=validator_id,
         user=user,
-        get_editable=False,
     )
 
     return ValidatorResponse.from_model(validator)
