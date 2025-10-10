@@ -72,7 +72,7 @@ def get_validators_for_user(
 
     stmt = select(Validator).options(
         joinedload(Validator.user),
-    )
+    ).where(Validator.user_id.is_not(None))
 
     stmt = _add_user_filters(stmt=stmt, user=user)
     return list(db_session.scalars(stmt).unique().all())
