@@ -233,7 +233,6 @@ def load_validators_templates_from_yaml(
                 existing_validator.description = validator_template.get("description")
                 existing_validator.validator_type = validator_template["validator_type"]
                 existing_validator.config = validator_template["config"]
-                existing_validator.is_public = validator_template.get("is_public", True)
 
                 db_session.commit()
 
@@ -251,7 +250,6 @@ def load_validators_templates_from_yaml(
                     description=validator_template.get("description"),
                     validator_type=validator_template["validator_type"],
                     config=validator_template["config"],
-                    is_public = validator_template.get("is_public", True),
                 )
 
                 db_session.add(validator)
