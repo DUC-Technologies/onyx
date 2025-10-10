@@ -1,7 +1,7 @@
 """add table validators__user_group and column is_public in validator
 
 Revision ID: 521e9ae36258
-Revises: 545b87ba0611
+Revises: 2b9492e28665
 Create Date: 2025-10-09 09:45:49.342782
 
 """
@@ -12,7 +12,7 @@ from sqlalchemy.dialects import postgresql
 
 # revision identifiers, used by Alembic.
 revision = "521e9ae36258"
-down_revision = "545b87ba0611"
+down_revision = "2b9492e28665"
 branch_labels = None
 depends_on = None
 
