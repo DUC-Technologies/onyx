@@ -148,9 +148,21 @@ class OAuthAccount(SQLAlchemyBaseOAuthAccountTableUUID, Base):
 class Validator__UserGroup(Base):
     __tablename__ = "validator__user_group"
 
-    validator_id: Mapped[int] = mapped_column(ForeignKey("validator.id"), primary_key=True)
+    validator_id: Mapped[int] = mapped_column(
+        ForeignKey(
+            "validator.id",
+            ondelete="CASCADE",
+            name="validator__user_group_validator_id_fkey",
+        ),
+        primary_key=True,
+    )
     user_group_id: Mapped[int] = mapped_column(
-        ForeignKey("user_group.id"), primary_key=True
+        ForeignKey(
+            "user_group.id",
+            ondelete="CASCADE",
+            name="validator__user_group_user_group_id_fkey",
+        ),
+        primary_key=True,
     )
 
 
@@ -337,8 +349,22 @@ class Persona__User(Base):
 class Persona__Validator(Base):
     __tablename__ = "persona__validator"
 
-    persona_id: Mapped[int] = mapped_column(ForeignKey("persona.id"), primary_key=True)
-    validator_id: Mapped[int] = mapped_column(ForeignKey("validator.id"), primary_key=True)
+    persona_id: Mapped[int] = mapped_column(
+        ForeignKey(
+            "persona.id",
+            ondelete="CASCADE",
+            name="persona__validator_persona_id_fkey",
+        ),
+        primary_key=True,
+    )
+    validator_id: Mapped[int] = mapped_column(
+        ForeignKey(
+            "validator.id",
+            ondelete="CASCADE",
+            name="persona__validator_validator_id_fkey",
+        ),
+        primary_key=True,
+    )
 
 
 class DocumentSet__User(Base):
@@ -1229,6 +1255,10 @@ class Validator(Base):
         "UserGroup",
         secondary=Validator__UserGroup.__table__,
         back_populates="validators",
+    )
+
+    __table_args__ = (
+        UniqueConstraint("name", name="uq_validator_name"),
     )
 
 """
