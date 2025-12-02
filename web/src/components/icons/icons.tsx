@@ -1,40 +1,5 @@
 "use client";
 
-import {
-  Trash,
-  XSquare,
-  LinkBreak,
-  Link,
-  Plug,
-  Brain,
-  X,
-  Question,
-  Gear,
-  ArrowSquareOut,
-  MapTrifold,
-} from "@phosphor-icons/react";
-import {
-  FiChevronsDown,
-  FiChevronsUp,
-  FiEdit2,
-  FiClipboard,
-  FiFile,
-  FiGlobe,
-  FiThumbsDown,
-  FiThumbsUp,
-  FiChevronDown,
-  FiChevronUp,
-  FiAlertCircle,
-  FiChevronRight,
-  FiChevronLeft,
-  FiAlertTriangle,
-  FiCopy,
-  FiCpu,
-  FiInfo,
-  FiBarChart2,
-  FiBookOpen,
-} from "react-icons/fi";
-import { SiBookstack } from "react-icons/si";
 import { StaticImageData } from "next/image";
 import jiraSVG from "../../../public/Jira.svg";
 import confluenceSVG from "../../../public/Confluence.svg";
@@ -90,7 +55,7 @@ import cohereIcon from "../../../public/Cohere.svg";
 import googleIcon from "../../../public/Google.png";
 import xenforoIcon from "../../../public/Xenforo.svg";
 import highspotIcon from "../../../public/Highspot.png";
-import { FaGithub, FaRobot } from "react-icons/fa";
+import githubIcon from "../../../public/Github.png";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 
@@ -102,6 +67,9 @@ export interface IconProps {
 export interface LogoIconProps extends IconProps {
   src: string | StaticImageData;
 }
+
+const ICONS_16_STROKE_BASE = "/icons/16%20Stroke";
+const ICONS_16_FILL_BASE = "/icons/16%20Fill";
 
 export const OpenAIISVG = ({
   size = 16,
@@ -144,26 +112,11 @@ export const AssistantsIconSkeleton = ({
   className = defaultTailwindCSS,
 }: IconProps) => {
   return (
-    <svg
-      style={{ width: `${size}px`, height: `${size}px` }}
-      className={`w-[${size}px] h-[${size}px] ` + className}
-      xmlns="http://www.w3.org/2000/svg"
-      width="200"
-      height="200"
-      viewBox="0 0 24 24"
-    >
-      <g
-        fill="none"
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="1.5"
-      >
-        <path d="M8.88 21.25h9.87a2.5 2.5 0 0 0 2.5-2.5v-3.63a2.5 2.5 0 0 0-2.5-2.48h-1.27m-6.1 6.09l6.1-6.11l1.87-1.87a2.49 2.49 0 0 0 0-3.53l-2.57-2.57a2.49 2.49 0 0 0-3.53 0l-1.87 1.87" />
-        <path d="M8.88 2.75H5.25a2.5 2.5 0 0 0-2.5 2.5v13.5a2.5 2.5 0 0 0 2.5 2.5h3.63a2.5 2.5 0 0 0 2.5-2.5V5.25a2.5 2.5 0 0 0-2.5-2.5" />
-        <path d="M7.065 18.594a1.594 1.594 0 1 0 0-3.188a1.594 1.594 0 0 0 0 3.188" />
-      </g>
-    </svg>
+    <LogoIcon
+      size={size}
+      className={className}
+      src={`${ICONS_16_STROKE_BASE}/ds_ic_16_face_id.svg`}
+    />
   );
 };
 
@@ -172,23 +125,11 @@ export const LightBulbIcon = ({
   className = defaultTailwindCSS,
 }: IconProps) => {
   return (
-    <svg
-      style={{ width: `${size}px`, height: `${size}px` }}
-      className={`w-[${size}px] h-[${size}px] ` + className}
-      xmlns="http://www.w3.org/2000/svg"
-      width="200"
-      height="200"
-      viewBox="0 0 24 24"
-    >
-      <path
-        fill="none"
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="1.5"
-        d="M12 18v-5.25m0 0a6.01 6.01 0 0 0 1.5-.189m-1.5.189a6.01 6.01 0 0 1-1.5-.189m3.75 7.478a12.06 12.06 0 0 1-4.5 0m3.75 2.383a14.406 14.406 0 0 1-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 1 0-7.517 0c.85.493 1.509 1.333 1.509 2.316V18"
-      />
-    </svg>
+    <LogoIcon
+      size={size}
+      className={className}
+      src={`${ICONS_16_STROKE_BASE}/ds_ic_16_table_lamp.svg`}
+    />
   );
 };
 
@@ -197,77 +138,24 @@ export const AssistantsIcon = ({
   className = defaultTailwindCSS,
 }: IconProps) => {
   return (
-    <svg
-      style={{ width: `${size}px`, height: `${size}px` }}
-      className={`w-[${size}px] h-[${size}px] ` + className}
-      xmlns="http://www.w3.org/2000/svg"
-      width="200"
-      height="200"
-      viewBox="0 0 24 24"
-    >
-      <path
-        fill="currentColor"
-        d="M20.893 12.84a3.23 3.23 0 0 0-1.796-.91l.639-.64c.3-.304.537-.664.698-1.06a3.207 3.207 0 0 0 0-2.48a3.16 3.16 0 0 0-.698-1.06l-2.564-2.56a2.993 2.993 0 0 0-.997-.71a3.244 3.244 0 0 0-2.484 0a3.113 3.113 0 0 0-.998.7l-.638.64a3.242 3.242 0 0 0-1.086-1.973A3.227 3.227 0 0 0 8.863 2H5.242a3.248 3.248 0 0 0-2.29.955A3.264 3.264 0 0 0 2 5.25v13.5c0 .862.342 1.689.95 2.298c.608.61 1.432.952 2.292.952h13.466a3.254 3.254 0 0 0 2.295-1A3.239 3.239 0 0 0 22 18.7v-3.58a3.246 3.246 0 0 0-1.107-2.28M6.928 19.35a2.34 2.34 0 0 1-2.166-1.45a2.356 2.356 0 0 1 .508-2.562A2.341 2.341 0 0 1 9.272 17a2.344 2.344 0 0 1-2.344 2.35m5.057-12.52l1.646-1.65c.162-.163.356-.293.569-.38c.426-.17.9-.17 1.326 0c.21.093.402.221.569.38l2.563 2.57a2 2 0 0 1 .38.57a1.788 1.788 0 0 1 0 1.34c-.09.21-.219.4-.38.56l-6.673 6.7z"
-      />
-
-      <path
-        fill="currentColor"
-        d="M7.795 17a.852.852 0 0 1-1.007.845a.847.847 0 0 1-.671-.665a.852.852 0 0 1 .83-1.02a.847.847 0 0 1 .848.84"
-      />
-    </svg>
+    <LogoIcon
+      size={size}
+      className={className}
+      src={`${ICONS_16_FILL_BASE}/ds_ic_16_face_id.svg`}
+    />
   );
 };
-
-<svg
-  xmlns="http://www.w3.org/2000/svg"
-  width="200"
-  height="200"
-  viewBox="0 0 24 24"
->
-  <g fill="none" stroke="currentColor" strokeWidth="1.5">
-    <path
-      strokeLinecap="round"
-      d="M21.483 19c-.04.936-.165 1.51-.569 1.914c-.586.586-1.528.586-3.414.586c-1.886 0-2.828 0-3.414-.586c-.586-.586-.586-1.528-.586-3.414v-2c0-1.886 0-2.828.586-3.414c.586-.586 1.528-.586 3.414-.586c1.886 0 2.828 0 3.414.586c.532.531.581 1.357.585 2.914"
-    />
-
-    <path d="M2 8.5c0 1.886 0 2.828.586 3.414c.586.586 1.528.586 3.414.586c1.886 0 2.828 0 3.414-.586C10 11.328 10 10.386 10 8.5v-2c0-1.886 0-2.828-.586-3.414C8.828 2.5 7.886 2.5 6 2.5c-1.886 0-2.828 0-3.414.586C2 3.672 2 4.614 2 6.5v2Z" />
-    <path
-      strokeLinecap="round"
-      d="M15.5 2.513c-.327.017-.562.055-.765.14a2 2 0 0 0-1.083 1.082c-.152.367-.152.833-.152 1.765c0 .932 0 1.398.152 1.765a2 2 0 0 0 1.083 1.083c.367.152.833.152 1.765.152h2c.932 0 1.398 0 1.765-.152a2 2 0 0 0 1.083-1.083c.152-.367.152-.833.152-1.765c0-.932 0-1.398-.152-1.765a2 2 0 0 0-1.083-1.083c-.204-.084-.438-.122-.765-.139"
-    />
-
-    <path d="M2 18.5c0 .932 0 1.398.152 1.765a2 2 0 0 0 1.083 1.083c.367.152.833.152 1.765.152h2c.932 0 1.398 0 1.765-.152a2 2 0 0 0 1.083-1.083C10 19.898 10 19.432 10 18.5c0-.932 0-1.398-.152-1.765a2 2 0 0 0-1.083-1.083C8.398 15.5 7.932 15.5 7 15.5H5c-.932 0-1.398 0-1.765.152a2 2 0 0 0-1.083 1.083C2 17.102 2 17.568 2 18.5Z" />
-  </g>
-</svg>;
 
 export const ConfigureIcon = ({
   size,
   className = defaultTailwindCSS,
 }: IconProps) => {
   return (
-    <svg
-      style={{ width: `${size}px`, height: `${size}px` }}
-      className={`w-[${size}px] h-[${size}px] ` + className}
-      xmlns="http://www.w3.org/2000/svg"
-      width="200"
-      height="200"
-      viewBox="0 0 24 24"
-    >
-      <g fill="none" stroke="currentColor" strokeWidth="1.5">
-        <path
-          strokeLinecap="round"
-          d="M21.483 19c-.04.936-.165 1.51-.569 1.914c-.586.586-1.528.586-3.414.586c-1.886 0-2.828 0-3.414-.586c-.586-.586-.586-1.528-.586-3.414v-2c0-1.886 0-2.828.586-3.414c.586-.586 1.528-.586 3.414-.586c1.886 0 2.828 0 3.414.586c.532.531.581 1.357.585 2.914"
-        />
-
-        <path d="M2 8.5c0 1.886 0 2.828.586 3.414c.586.586 1.528.586 3.414.586c1.886 0 2.828 0 3.414-.586C10 11.328 10 10.386 10 8.5v-2c0-1.886 0-2.828-.586-3.414C8.828 2.5 7.886 2.5 6 2.5c-1.886 0-2.828 0-3.414.586C2 3.672 2 4.614 2 6.5v2Z" />
-        <path
-          strokeLinecap="round"
-          d="M15.5 2.513c-.327.017-.562.055-.765.14a2 2 0 0 0-1.083 1.082c-.152.367-.152.833-.152 1.765c0 .932 0 1.398.152 1.765a2 2 0 0 0 1.083 1.083c.367.152.833.152 1.765.152h2c.932 0 1.398 0 1.765-.152a2 2 0 0 0 1.083-1.083c.152-.367.152-.833.152-1.765c0-.932 0-1.398-.152-1.765a2 2 0 0 0-1.083-1.083c-.204-.084-.438-.122-.765-.139"
-        />
-
-        <path d="M2 18.5c0 .932 0 1.398.152 1.765a2 2 0 0 0 1.083 1.083c.367.152.833.152 1.765.152h2c.932 0 1.398 0 1.765-.152a2 2 0 0 0 1.083-1.083C10 19.898 10 19.432 10 18.5c0-.932 0-1.398-.152-1.765a2 2 0 0 0-1.083-1.083C8.398 15.5 7.932 15.5 7 15.5H5c-.932 0-1.398 0-1.765.152a2 2 0 0 0-1.083 1.083C2 17.102 2 17.568 2 18.5Z" />
-      </g>
-    </svg>
+    <LogoIcon
+      size={size}
+      className={className}
+      src={`${ICONS_16_FILL_BASE}/ds_ic_16_rectangle_on_dashed_rectangle.svg`}
+    />
   );
 };
 
@@ -407,7 +295,13 @@ export const PlugIcon = ({
   size = 16,
   className = defaultTailwindCSS,
 }: IconProps) => {
-  return <Plug size={size} className={className} />;
+  return (
+    <LogoIcon
+      size={size}
+      className={className}
+      src={`${ICONS_16_STROKE_BASE}/ds_ic_16_change_blocks.svg`}
+    />
+  );
 };
 
 export const ExtendIcon = ({
@@ -434,49 +328,91 @@ export const GearIcon = ({
   size = 16,
   className = defaultTailwindCSS,
 }: IconProps) => {
-  return <Gear size={size} className={className} />;
+  return (
+    <LogoIcon
+      size={size}
+      className={className}
+      src={`${ICONS_16_STROKE_BASE}/ds_ic_16_rectangle_on_dashed_rectangle.svg`}
+    />
+  );
 };
 
 export const ArrowSquareOutIcon = ({
   size = 16,
   className = defaultTailwindCSS,
 }: IconProps) => {
-  return <ArrowSquareOut size={size} className={className} />;
+  return (
+    <LogoIcon
+      size={size}
+      className={className}
+      src={`${ICONS_16_STROKE_BASE}/ds_ic_16_arrow_right_chevron_rectangle.svg`}
+    />
+  );
 };
 
 export const TrashIcon = ({
   size = 16,
   className = defaultTailwindCSS,
 }: IconProps) => {
-  return <Trash size={size} className={className} />;
+  return (
+    <LogoIcon
+      size={size}
+      className={className}
+      src={`${ICONS_16_STROKE_BASE}/ds_ic_16_basket.svg`}
+    />
+  );
 };
 
 export const LinkBreakIcon = ({
   size = 16,
   className = defaultTailwindCSS,
 }: IconProps) => {
-  return <LinkBreak size={size} className={className} />;
+  return (
+    <LogoIcon
+      size={size}
+      className={className}
+      src={`${ICONS_16_STROKE_BASE}/ds_ic_16_square_on_square.svg`}
+    />
+  );
 };
 
 export const LinkIcon = ({
   size = 16,
   className = defaultTailwindCSS,
 }: IconProps) => {
-  return <Link size={size} className={className} />;
+  return (
+    <LogoIcon
+      size={size}
+      className={className}
+      src={`${ICONS_16_STROKE_BASE}/ds_ic_16_rectangle_on_dashed_rectangle.svg`}
+    />
+  );
 };
 
 export const XSquareIcon = ({
   size = 16,
   className = defaultTailwindCSS,
 }: IconProps) => {
-  return <XSquare size={size} className={className} />;
+  return (
+    <LogoIcon
+      size={size}
+      className={className}
+      src={`${ICONS_16_STROKE_BASE}/ds_ic_16_cross.svg`}
+    />
+  );
 };
 
 export const FileIcon = ({
   size = 16,
   className = defaultTailwindCSSBlue,
 }: IconProps) => {
-  return <FiFile size={size} className={className} />;
+  return (
+    <LogoIcon
+      size={size}
+      className={className}
+      src={`${ICONS_16_STROKE_BASE}/ds_ic_16_file_doc.svg`}
+    />
+  );
 };
 
 export const FileIcon2 = ({
@@ -507,56 +443,104 @@ export const InfoIcon = ({
   size = 16,
   className = defaultTailwindCSS,
 }: IconProps) => {
-  return <FiInfo size={size} className={className} />;
+  return (
+    <LogoIcon
+      size={size}
+      className={className}
+      src={`${ICONS_16_STROKE_BASE}/ds_ic_16_head_question.svg`}
+    />
+  );
 };
 
 export const QuestionIcon = ({
   size = 16,
   className = defaultTailwindCSS,
 }: IconProps) => {
-  return <Question size={size} className={className} />;
+  return (
+    <LogoIcon
+      size={size}
+      className={className}
+      src={`${ICONS_16_STROKE_BASE}/ds_ic_16_head_question.svg`}
+    />
+  );
 };
 
 export const BrainIcon = ({
   size = 16,
   className = defaultTailwindCSS,
 }: IconProps) => {
-  return <Brain size={size} className={className} />;
+  return (
+    <LogoIcon
+      size={size}
+      className={className}
+      src={`${ICONS_16_STROKE_BASE}/ds_ic_16_mindmap.svg`}
+    />
+  );
 };
 
 export const KnowledgeMapIcon = ({
   size = 16,
   className = defaultTailwindCSS,
 }: IconProps) => {
-  return <MapTrifold size={size} className={className} />;
+  return (
+    <LogoIcon
+      size={size}
+      className={className}
+      src={`${ICONS_16_STROKE_BASE}/ds_ic_16_mindmap.svg`}
+    />
+  );
 };
 
 export const EditIcon = ({
   size = 16,
   className = defaultTailwindCSS,
 }: IconProps) => {
-  return <FiEdit2 size={size} className={className} />;
+  return (
+    <LogoIcon
+      size={size}
+      className={className}
+      src={`${ICONS_16_STROKE_BASE}/ds_ic_16_pencil.svg`}
+    />
+  );
 };
 
 export const ThumbsDownIcon = ({
   size = 16,
   className = defaultTailwindCSS,
 }: IconProps) => {
-  return <FiThumbsDown size={size} className={className} />;
+  return (
+    <LogoIcon
+      size={size}
+      className={className}
+      src={`${ICONS_16_STROKE_BASE}/ds_ic_16_thumb_down.svg`}
+    />
+  );
 };
 
 export const ChevronsUpIcon = ({
   size = 16,
   className = defaultTailwindCSS,
 }: IconProps) => {
-  return <FiChevronsUp size={size} className={className} />;
+  return (
+    <LogoIcon
+      size={size}
+      className={className}
+      src={`${ICONS_16_STROKE_BASE}/ds_ic_16_keyboard_down.svg`}
+    />
+  );
 };
 
 export const ChevronsDownIcon = ({
   size = 16,
   className = defaultTailwindCSS,
 }: IconProps) => {
-  return <FiChevronsDown size={size} className={className} />;
+  return (
+    <LogoIcon
+      size={size}
+      className={className}
+      src={`${ICONS_16_STROKE_BASE}/ds_ic_16_keyboard_down.svg`}
+    />
+  );
 };
 
 export const RedmineIcon = ({
@@ -612,28 +596,52 @@ export const ChevronUpIcon = ({
   size = 16,
   className = defaultTailwindCSS,
 }: IconProps) => {
-  return <FiChevronUp size={size} className={className} />;
+  return (
+    <LogoIcon
+      size={size}
+      className={className}
+      src={`${ICONS_16_STROKE_BASE}/ds_ic_16_keyboard_down.svg`}
+    />
+  );
 };
 
 export const ChevronDownIcon = ({
   size = 16,
   className = defaultTailwindCSS,
 }: IconProps) => {
-  return <FiChevronDown size={size} className={className} />;
+  return (
+    <LogoIcon
+      size={size}
+      className={className}
+      src={`${ICONS_16_STROKE_BASE}/ds_ic_16_keyboard_down.svg`}
+    />
+  );
 };
 
 export const ChevronRightIcon = ({
   size = 16,
   className = defaultTailwindCSS,
 }: IconProps) => {
-  return <FiChevronRight size={size} className={className} />;
+  return (
+    <LogoIcon
+      size={size}
+      className={className}
+      src={`${ICONS_16_STROKE_BASE}/ds_ic_16_arrow_right_chevron_rectangle.svg`}
+    />
+  );
 };
 
 export const ChevronLeftIcon = ({
   size = 16,
   className = defaultTailwindCSS,
 }: IconProps) => {
-  return <FiChevronLeft size={size} className={className} />;
+  return (
+    <LogoIcon
+      size={size}
+      className={className}
+      src={`${ICONS_16_STROKE_BASE}/ds_ic_16_arrow_right_chevron_rectangle.svg`}
+    />
+  );
 };
 
 export const XIcon = ({
@@ -716,21 +724,11 @@ export const MagnifyingIcon = ({
   className = defaultTailwindCSS,
 }: IconProps) => {
   return (
-    <svg
-      style={{ width: `${size}px`, height: `${size}px` }}
-      className={`w-[${size}px] h-[${size}px] ` + className}
-      xmlns="http://www.w3.org/2000/svg"
-      width="200"
-      height="200"
-      viewBox="0 0 16 16"
-    >
-      <path
-        fill="currentColor"
-        fillRule="evenodd"
-        d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06zM10.5 7a3.5 3.5 0 1 1-7 0a3.5 3.5 0 0 1 7 0"
-        clipRule="evenodd"
-      />
-    </svg>
+    <LogoIcon
+      size={size}
+      className={className}
+      src={`${ICONS_16_STROKE_BASE}/ds_ic_16_document_magnifying_glass.svg`}
+    />
   );
 };
 
@@ -739,21 +737,11 @@ export const ToggleDown = ({
   className = defaultTailwindCSS,
 }: IconProps) => {
   return (
-    <svg
-      style={{ width: `${size}px`, height: `${size}px` }}
-      className={`w-[${size}px] h-[${size}px] ` + className}
-      xmlns="http://www.w3.org/2000/svg"
-      width="200"
-      height="200"
-      viewBox="0 0 16 16"
-    >
-      <path
-        fill="currentColor"
-        fillRule="evenodd"
-        d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06"
-        clipRule="evenodd"
-      />
-    </svg>
+    <LogoIcon
+      size={size}
+      className={className}
+      src={`${ICONS_16_STROKE_BASE}/ds_ic_16_keyboard_down.svg`}
+    />
   );
 };
 
@@ -762,21 +750,11 @@ export const ToggleUp = ({
   className = defaultTailwindCSS,
 }: IconProps) => {
   return (
-    <svg
-      style={{ width: `${size}px`, height: `${size}px` }}
-      className={`w-[${size}px] h-[${size}px] ` + className}
-      xmlns="http://www.w3.org/2000/svg"
-      width="200"
-      height="200"
-      viewBox="0 0 16 16"
-    >
-      <path
-        fill="currentColor"
-        fillRule="evenodd"
-        d="M11.78 9.78a.75.75 0 0 1-1.06 0L8 7.06L5.28 9.78a.75.75 0 0 1-1.06-1.06l3.25-3.25a.75.75 0 0 1 1.06 0l3.25 3.25a.75.75 0 0 1 0 1.06"
-        clipRule="evenodd"
-      />
-    </svg>
+    <LogoIcon
+      size={size}
+      className={className}
+      src={`${ICONS_16_STROKE_BASE}/ds_ic_16_keyboard_down.svg`}
+    />
   );
 };
 
@@ -785,19 +763,11 @@ export const BroomIcon = ({
   className = defaultTailwindCSS,
 }: IconProps) => {
   return (
-    <svg
-      style={{ width: `${size}px`, height: `${size}px` }}
-      className={`w-[${size}px] h-[${size}px]` + className}
-      xmlns="http://www.w3.org/2000/svg"
-      width="200"
-      height="200"
-      viewBox="0 0 24 24"
-    >
-      <path
-        fill="currentColor"
-        d="M18.221 19.643c.477-.903.942-1.937 1.24-2.98c.411-1.438.56-2.788.602-3.818l-1.552-1.552l-5.804-5.804l-1.552-1.552c-1.03.042-2.38.19-3.817.602c-1.045.298-2.078.763-2.981 1.24C2.1 6.97 1.427 9.71 2.497 11.807l.013.025l.7 1.15a23.338 23.338 0 0 0 7.808 7.809l1.15.699l.025.013c2.096 1.07 4.837.396 6.028-1.86Zm3.554-16.33a.77.77 0 0 0-1.088-1.088L19.012 3.9a4.877 4.877 0 0 0-5.718 0l1.109 1.109l4.588 4.588l1.109 1.109a4.877 4.877 0 0 0 0-5.718l1.675-1.675Z"
-      />
-    </svg>
+    <LogoIcon
+      size={size}
+      className={className}
+      src={`${ICONS_16_STROKE_BASE}/ds_ic_16_cleaning.svg`}
+    />
   );
 };
 
@@ -806,19 +776,11 @@ export const ChevronIcon = ({
   className = defaultTailwindCSS,
 }: IconProps) => {
   return (
-    <svg
-      style={{ width: `${size}px`, height: `${size}px` }}
-      className={`w-[${size}px] h-[${size}px] ` + className}
-      xmlns="http://www.w3.org/2000/svg"
-      width="200"
-      height="200"
-      viewBox="0 0 24 24"
-    >
-      <path
-        fill="currentColor"
-        d="M15.25 2h-6.5A6.76 6.76 0 0 0 2 8.75v6.5A6.76 6.76 0 0 0 8.75 22h6.5A6.76 6.76 0 0 0 22 15.25v-6.5A6.76 6.76 0 0 0 15.25 2m-.23 10.77a2.109 2.109 0 0 1-.46.67l-3.68 3.68a1 1 0 0 1-1.41 0a1 1 0 0 1 0-1.41l3.68-3.68v-.12L9.5 8.3a1 1 0 1 1 1.4-1.43l3.67 3.59a2.069 2.069 0 0 1 .63 1.49a2.07 2.07 0 0 1-.18.82"
-      />
-    </svg>
+    <LogoIcon
+      size={size}
+      className={className}
+      src={`${ICONS_16_STROKE_BASE}/ds_ic_16_arrow_right_chevron_rectangle.svg`}
+    />
   );
 };
 
@@ -827,23 +789,11 @@ export const StarFeedback = ({
   className = defaultTailwindCSS,
 }: IconProps) => {
   return (
-    <svg
-      style={{ width: `${size}px`, height: `${size}px` }}
-      className={`w-[${size}px] h-[${size}px] ` + className}
-      xmlns="http://www.w3.org/2000/svg"
-      width="200"
-      height="200"
-      viewBox="0 0 24 24"
-    >
-      <path
-        fill="none"
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="1.5"
-        d="m12.495 18.587l4.092 2.15a1.044 1.044 0 0 0 1.514-1.106l-.783-4.552a1.045 1.045 0 0 1 .303-.929l3.31-3.226a1.043 1.043 0 0 0-.575-1.785l-4.572-.657A1.044 1.044 0 0 1 15 7.907l-2.088-4.175a1.044 1.044 0 0 0-1.88 0L8.947 7.907a1.044 1.044 0 0 1-.783.575l-4.51.657a1.044 1.044 0 0 0-.584 1.785l3.309 3.226a1.044 1.044 0 0 1 .303.93l-.783 4.55a1.044 1.044 0 0 0 1.513 1.107l4.093-2.15a1.043 1.043 0 0 1 .991 0"
-      />
-    </svg>
+    <LogoIcon
+      size={size}
+      className={className}
+      src={`${ICONS_16_STROKE_BASE}/ds_ic_16_star.svg`}
+    />
   );
 };
 
@@ -852,25 +802,11 @@ export const DislikeFeedback = ({
   className = defaultTailwindCSS,
 }: IconProps) => {
   return (
-    <svg
-      style={{ width: `${size}px`, height: `${size}px` }}
-      className={`w-[${size}px] h-[${size}px] ` + className}
-      xmlns="http://www.w3.org/2000/svg"
-      width="200"
-      height="200"
-      viewBox="0 0 24 24"
-    >
-      <g
-        fill="none"
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="1.5"
-      >
-        <path d="M5.75 2.75H4.568c-.98 0-1.775.795-1.775 1.776v8.284c0 .98.795 1.775 1.775 1.775h1.184c.98 0 1.775-.794 1.775-1.775V4.526c0-.98-.795-1.776-1.775-1.776" />
-        <path d="m21.16 11.757l-1.42-7.101a2.368 2.368 0 0 0-2.367-1.906h-7.48a2.367 2.367 0 0 0-2.367 2.367v7.101a3.231 3.231 0 0 0 1.184 2.367l.982 5.918a.887.887 0 0 0 1.278.65l1.1-.543a3.551 3.551 0 0 0 1.87-4.048l-.496-1.965h5.396a2.368 2.368 0 0 0 2.32-2.84" />
-      </g>
-    </svg>
+    <LogoIcon
+      size={size}
+      className={className}
+      src={`${ICONS_16_STROKE_BASE}/ds_ic_16_thumb_down.svg`}
+    />
   );
 };
 
@@ -879,25 +815,11 @@ export const LikeFeedback = ({
   className = defaultTailwindCSS,
 }: IconProps) => {
   return (
-    <svg
-      style={{ width: `${size}px`, height: `${size}px` }}
-      className={`w-[${size}px] h-[${size}px] ` + className}
-      xmlns="http://www.w3.org/2000/svg"
-      width="200"
-      height="200"
-      viewBox="0 0 24 24"
-    >
-      <g
-        fill="none"
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="1.5"
-      >
-        <path d="M5.75 9.415H4.568c-.98 0-1.775.794-1.775 1.775v8.284c0 .98.795 1.776 1.775 1.776h1.184c.98 0 1.775-.795 1.775-1.776V11.19c0-.98-.795-1.775-1.775-1.775" />
-        <path d="m21.16 12.243l-1.42 7.101a2.367 2.367 0 0 1-2.367 1.906h-7.48a2.367 2.367 0 0 1-2.367-2.367v-7.101A3.231 3.231 0 0 1 8.71 9.415l.982-5.918a.888.888 0 0 1 1.278-.65l1.1.544a3.55 3.55 0 0 1 1.87 4.047l-.496 1.965h5.396a2.367 2.367 0 0 1 2.32 2.84" />
-      </g>
-    </svg>
+    <LogoIcon
+      size={size}
+      className={className}
+      src={`${ICONS_16_STROKE_BASE}/ds_ic_16_thumb_up.svg`}
+    />
   );
 };
 
@@ -930,53 +852,76 @@ export const ClipboardIcon = ({
   size = 16,
   className = defaultTailwindCSS,
 }: IconProps) => {
-  return <FiClipboard size={size} className={className} />;
+  return (
+    <LogoIcon
+      size={size}
+      className={className}
+      src={`${ICONS_16_STROKE_BASE}/ds_ic_16_document_on_document.svg`}
+    />
+  );
 };
 
 export const AlertIcon = ({
   size = 16,
   className = defaultTailwindCSS,
 }: IconProps) => {
-  return <FiAlertCircle size={size} className={className} />;
+  return (
+    <LogoIcon
+      size={size}
+      className={className}
+      src={`${ICONS_16_STROKE_BASE}/ds_ic_16_flame.svg`}
+    />
+  );
 };
 
 export const TriangleAlertIcon = ({
   size = 16,
   className = defaultTailwindCSS,
 }: IconProps) => {
-  return <FiAlertTriangle size={size} className={className} />;
+  return (
+    <LogoIcon
+      size={size}
+      className={className}
+      src={`${ICONS_16_STROKE_BASE}/ds_ic_16_flame.svg`}
+    />
+  );
 };
 
 export const CopyIcon = ({
   size = 16,
   className = defaultTailwindCSS,
 }: IconProps) => {
-  return <FiCopy size={size} className={className} />;
+  return (
+    <LogoIcon
+      size={size}
+      className={className}
+      src={`${ICONS_16_STROKE_BASE}/ds_ic_16_document_on_document.svg`}
+    />
+  );
 };
 
 export const CPUIcon = ({
   size = 16,
   className = defaultTailwindCSS,
 }: IconProps) => {
-  return <FiCpu size={size} className={className} />;
+  return (
+    <LogoIcon
+      size={size}
+      className={className}
+      src={`${ICONS_16_STROKE_BASE}/ds_ic_16_graph.svg`}
+    />
+  );
 };
 export const ChatIcon = ({
   size = 16,
   className = defaultTailwindCSS,
 }: IconProps) => {
   return (
-    <svg
-      style={{ width: `${size}px`, height: `${size}px` }}
-      className={`w-[${size}px] h-[${size}px] ` + className}
-      fill="none"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth="2"
-      viewBox="0 0 24 24"
-      stroke="currentColor"
-    >
-      <path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
-    </svg>
+    <LogoIcon
+      size={size}
+      className={className}
+      src={`${ICONS_16_FILL_BASE}/ds_ic_16_cursor_rays.svg`}
+    />
   );
 };
 
@@ -985,23 +930,11 @@ export const SendIcon = ({
   className = defaultTailwindCSS,
 }: IconProps) => {
   return (
-    <svg
-      style={{ width: `${size}px`, height: `${size}px` }}
-      className={`w-[${size}px] h-[${size}px] ` + className}
-      xmlns="http://www.w3.org/2000/svg"
-      width="200"
-      height="200"
-      viewBox="0 0 24 24"
-    >
-      <path
-        fill="none"
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="2"
-        d="M12 19V5m-7 7l7-7l7 7"
-      />
-    </svg>
+    <LogoIcon
+      size={size}
+      className={className}
+      src={`${ICONS_16_FILL_BASE}/ds_ic_16_mail.svg`}
+    />
   );
 };
 export const SearchIcon = ({
@@ -1105,14 +1038,24 @@ export const GithubIcon = ({
   size = 16,
   className = defaultTailwindCSS,
 }: IconProps) => (
-  <FaGithub size={size} className={cn(className, "text-black")} />
+  <LogoIcon
+    size={size}
+    className={cn(className, "text-black")}
+    src={githubIcon}
+  />
 );
 
 export const GlobeIcon = ({
   size = 16,
   className = defaultTailwindCSSBlue,
 }: IconProps) => {
-  return <FiGlobe size={size} className={className} />;
+  return (
+    <LogoIcon
+      size={size}
+      className={className}
+      src={`${ICONS_16_STROKE_BASE}/ds_ic_16_viewfinder_rectangle.svg`}
+    />
+  );
 };
 
 export const GlobeIcon2 = ({
@@ -1155,7 +1098,13 @@ export const BookstackIcon = ({
   size = 16,
   className = defaultTailwindCSS,
 }: IconProps) => {
-  return <SiBookstack size={size} className={className} />;
+  return (
+    <LogoIcon
+      size={size}
+      className={className}
+      src={`${ICONS_16_STROKE_BASE}/ds_ic_16_open_book.svg`}
+    />
+  );
 };
 
 export const ConfluenceIcon = ({
@@ -1576,7 +1525,13 @@ export const BarChartIcon = ({
   size = 16,
   className = defaultTailwindCSS,
 }: IconProps) => {
-  return <FiBarChart2 size={size} className={className} />;
+  return (
+    <LogoIcon
+      size={size}
+      className={className}
+      src={`${ICONS_16_STROKE_BASE}/ds_ic_16_card_bar_graph.svg`}
+    />
+  );
 };
 
 //  Admin Icons
@@ -1586,23 +1541,11 @@ export const NotebookIconSkeleton = ({
   className = defaultTailwindCSS,
 }: IconProps) => {
   return (
-    <svg
-      style={{ width: `${size}px`, height: `${size}px` }}
-      className={`w-[${size}px] h-[${size}px] ` + className}
-      xmlns="http://www.w3.org/2000/svg"
-      width="200"
-      height="200"
-      viewBox="0 0 24 24"
-    >
-      <path
-        fill="none"
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="1.5"
-        d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25"
-      />
-    </svg>
+    <LogoIcon
+      size={size}
+      className={className}
+      src={`${ICONS_16_STROKE_BASE}/ds_ic_16_open_book.svg`}
+    />
   );
 };
 
@@ -1611,19 +1554,11 @@ export const NotebookIcon = ({
   className = defaultTailwindCSS,
 }: IconProps) => {
   return (
-    <svg
-      style={{ width: `${size}px`, height: `${size}px` }}
-      className={`w-[${size}px] h-[${size}px] ` + className}
-      xmlns="http://www.w3.org/2000/svg"
-      width="200"
-      height="200"
-      viewBox="0 0 24 24"
-    >
-      <path
-        fill="currentColor"
-        d="M11.25 4.533A9.707 9.707 0 0 0 6 3a9.735 9.735 0 0 0-3.25.555a.75.75 0 0 0-.5.707v14.25a.75.75 0 0 0 1 .707A8.237 8.237 0 0 1 6 18.75c1.995 0 3.823.707 5.25 1.886V4.533Zm1.5 16.103A8.214 8.214 0 0 1 18 18.75c.966 0 1.89.166 2.75.47a.75.75 0 0 0 1-.708V4.262a.75.75 0 0 0-.5-.707A9.735 9.735 0 0 0 18 3a9.707 9.707 0 0 0-5.25 1.533v16.103Z"
-      />
-    </svg>
+    <LogoIcon
+      size={size}
+      className={className}
+      src={`${ICONS_16_FILL_BASE}/ds_ic_16_open_book.svg`}
+    />
   );
 };
 
@@ -1632,23 +1567,11 @@ export const ConnectorIconSkeleton = ({
   className = defaultTailwindCSS,
 }: IconProps) => {
   return (
-    <svg
-      style={{ width: `${size}px`, height: `${size}px` }}
-      className={`w-[${size}px] h-[${size}px] ` + className}
-      xmlns="http://www.w3.org/2000/svg"
-      width="200"
-      height="200"
-      viewBox="0 0 24 24"
-    >
-      <path
-        fill="none"
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="1.5"
-        d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 0 1-1.41-8.775a5.25 5.25 0 0 1 10.233-2.33a3 3 0 0 1 3.758 3.848A3.752 3.752 0 0 1 18 19.5H6.75Z"
-      />
-    </svg>
+    <LogoIcon
+      size={size}
+      className={className}
+      src={`${ICONS_16_STROKE_BASE}/ds_ic_16_cards_stack.svg`}
+    />
   );
 };
 
@@ -1657,21 +1580,11 @@ export const ConnectorIcon = ({
   className = defaultTailwindCSS,
 }: IconProps) => {
   return (
-    <svg
-      style={{ width: `${size}px`, height: `${size}px` }}
-      className={`w-[${size}px] h-[${size}px] ` + className}
-      xmlns="http://www.w3.org/2000/svg"
-      width="200"
-      height="200"
-      viewBox="0 0 16 16"
-    >
-      <path
-        fill="currentColor"
-        fillRule="evenodd"
-        d="M4.5 13a3.5 3.5 0 0 1-1.41-6.705a3.5 3.5 0 0 1 6.63-2.171a2.5 2.5 0 0 1 3.197 3.018A3.001 3.001 0 0 1 12 13zm.72-5.03a.75.75 0 0 0 1.06 1.06l.97-.97v2.69a.75.75 0 0 0 1.5 0V8.06l.97.97a.75.75 0 1 0 1.06-1.06L8.53 5.72a.75.75 0 0 0-1.06 0z"
-        clipRule="evenodd"
-      />
-    </svg>
+    <LogoIcon
+      size={size}
+      className={className}
+      src={`${ICONS_16_FILL_BASE}/ds_ic_16_cards_stack.svg`}
+    />
   );
 };
 
@@ -1684,13 +1597,13 @@ export const DocumentSetIcon = ({
       style={{ width: `${size}px`, height: `${size}px` }}
       className={`w-[${size}px] h-[${size}px] ` + className}
       xmlns="http://www.w3.org/2000/svg"
-      width="200"
-      height="200"
-      viewBox="0 0 24 24"
+      viewBox="0 0 16 16"
     >
       <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M12 1.5C12.2761 1.5 12.5 1.72386 12.5 2V11.5C12.5 11.7761 12.2761 12 12 12H11L11 4C11 3.44772 10.5523 3 10 3H5V2C5 1.72386 5.22386 1.5 5.5 1.5H12ZM2.5 4.5C2.5 4.22386 2.72386 4 3 4H9.5C9.77614 4 10 4.22386 10 4.5V13.5C10 13.7761 9.77614 14 9.5 14H3C2.72386 14 2.5 13.7761 2.5 13.5V4.5ZM8.5 7H4V6H8.5V7ZM4 9.5H8.5V8.5H4V9.5ZM8.5 12H4V11H8.5V12Z"
         fill="currentColor"
-        d="M22 9.885v7.7a3.85 3.85 0 0 1-2.373 3.542a3.8 3.8 0 0 1-1.467.288H5.83A3.82 3.82 0 0 1 2 17.585V6.425a3.82 3.82 0 0 1 3.83-3.84h3.08a3.87 3.87 0 0 1 3.2 1.71l.87 1.33a1 1 0 0 0 .36.32a.94.94 0 0 0 .47.12h4.35a3.79 3.79 0 0 1 2.71 1.11A3.85 3.85 0 0 1 22 9.885"
       />
     </svg>
   );
@@ -1705,17 +1618,13 @@ export const DocumentSetIconSkeleton = ({
       style={{ width: `${size}px`, height: `${size}px` }}
       className={`w-[${size}px] h-[${size}px] ` + className}
       xmlns="http://www.w3.org/2000/svg"
-      width="200"
-      height="200"
-      viewBox="0 0 24 24"
+      viewBox="0 0 16 16"
     >
       <path
-        fill="none"
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="1.5"
-        d="M21.25 9.883v7.698a3.083 3.083 0 0 1-3.083 3.083H5.833a3.083 3.083 0 0 1-3.083-3.083V6.419a3.083 3.083 0 0 1 3.083-3.083h3.084a3.083 3.083 0 0 1 2.57 1.377l.873 1.326a1.748 1.748 0 0 0 1.449.77h4.358a3.084 3.084 0 0 1 3.083 3.074"
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M5 3C5 2.44772 5.44772 2 6 2H12C12.5523 2 13 2.44772 13 3V11C13 11.5523 12.5523 12 12 12H11V13C11 13.5523 10.5523 14 10 14H4C3.44772 14 3 13.5523 3 13V5C3 4.44772 3.44771 4 4 4H5V3ZM12 11H11V5C11 4.44772 10.5523 4 10 4H6V3H12V11ZM4 5L5.5 5H10V11.5V13H4V5ZM5 7.5H9V6.5H5V7.5ZM9 9.5H5V8.5H9V9.5ZM5 11.5H9V10.5H5V11.5Z"
+        fill="currentColor"
       />
     </svg>
   );
@@ -1725,23 +1634,11 @@ export const BookmarkIconSkeleton = ({
   className = defaultTailwindCSS,
 }: IconProps) => {
   return (
-    <svg
-      style={{ width: `${size}px`, height: `${size}px` }}
-      className={`w-[${size}px] h-[${size}px] ` + className}
-      xmlns="http://www.w3.org/2000/svg"
-      width="200"
-      height="200"
-      viewBox="0 0 24 24"
-    >
-      <path
-        fill="none"
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="1.5"
-        d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25L4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z"
-      />
-    </svg>
+    <LogoIcon
+      size={size}
+      className={className}
+      src={`${ICONS_16_STROKE_BASE}/ds_ic_16_note.svg`}
+    />
   );
 };
 export const BookmarkIcon = ({
@@ -1749,26 +1646,24 @@ export const BookmarkIcon = ({
   className = defaultTailwindCSS,
 }: IconProps) => {
   return (
-    <svg
-      style={{ width: `${size}px`, height: `${size}px` }}
-      className={`w-[${size}px] h-[${size}px] ` + className}
-      xmlns="http://www.w3.org/2000/svg"
-      width="200"
-      height="200"
-      viewBox="0 0 16 16"
-    >
-      <path
-        fill="currentColor"
-        d="M3.75 2a.75.75 0 0 0-.75.75v10.5a.75.75 0 0 0 1.28.53L8 10.06l3.72 3.72a.75.75 0 0 0 1.28-.53V2.75a.75.75 0 0 0-.75-.75z"
-      />
-    </svg>
+    <LogoIcon
+      size={size}
+      className={className}
+      src={`${ICONS_16_FILL_BASE}/ds_ic_16_note.svg`}
+    />
   );
 };
 export const BookOpen = ({
   size = 16,
   className = defaultTailwindCSS,
 }: IconProps) => {
-  return <FiBookOpen size={size} className={className} />;
+  return (
+    <LogoIcon
+      size={size}
+      className={className}
+      src={`${ICONS_16_STROKE_BASE}/ds_ic_16_open_book.svg`}
+    />
+  );
 };
 export const BookIcon = ({
   size = 16,
@@ -1796,23 +1691,11 @@ export const ZoomInIconSkeleton = ({
   className = defaultTailwindCSS,
 }: IconProps) => {
   return (
-    <svg
-      style={{ width: `${size}px`, height: `${size}px` }}
-      className={`w-[${size}px] h-[${size}px] ` + className}
-      xmlns="http://www.w3.org/2000/svg"
-      width="200"
-      height="200"
-      viewBox="0 0 24 24"
-    >
-      <path
-        fill="none"
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="1.5"
-        d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m5.231 13.481L15 17.25m-4.5-15H5.625c-.621 0-1.125.504-1.125 1.125v16.5c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Zm3.75 11.625a2.625 2.625 0 1 1-5.25 0a2.625 2.625 0 0 1 5.25 0Z"
-      />
-    </svg>
+    <LogoIcon
+      size={size}
+      className={className}
+      src={`${ICONS_16_STROKE_BASE}/ds_ic_16_document_magnifying_glass.svg`}
+    />
   );
 };
 
@@ -1846,23 +1729,11 @@ export const ThumbsUpIconSkeleton = ({
   className = defaultTailwindCSS,
 }: IconProps) => {
   return (
-    <svg
-      style={{ width: `${size}px`, height: `${size}px` }}
-      className={`w-[${size}px] h-[${size}px] ` + className}
-      xmlns="http://www.w3.org/2000/svg"
-      width="200"
-      height="200"
-      viewBox="0 0 24 24"
-    >
-      <path
-        fill="none"
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="1.5"
-        d="M8.625 9.75a.375.375 0 1 1-.75 0a.375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0a.375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0a.375.375 0 0 1 .75 0Zm0 0h-.375m-13.5 3.01c0 1.6 1.123 2.994 2.707 3.227c1.087.16 2.185.283 3.293.369V21l4.184-4.183a1.14 1.14 0 0 1 .778-.332a48.294 48.294 0 0 0 5.83-.498c1.585-.233 2.708-1.626 2.708-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0 0 12 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018Z"
-      />
-    </svg>
+    <LogoIcon
+      size={size}
+      className={className}
+      src={`${ICONS_16_STROKE_BASE}/ds_ic_16_thumb_up.svg`}
+    />
   );
 };
 
@@ -1894,21 +1765,11 @@ export const StopGeneratingIcon = ({
   className = defaultTailwindCSS,
 }: IconProps) => {
   return (
-    <svg
-      style={{ width: `${size}px`, height: `${size}px` }}
-      className={`w-[${size}px] h-[${size}px] ` + className}
-      xmlns="http://www.w3.org/2000/svg"
-      width="200"
-      height="200"
-      viewBox="0 0 14 14"
-    >
-      <path
-        fill="currentColor"
-        fillRule="evenodd"
-        d="M1.5 0A1.5 1.5 0 0 0 0 1.5v11A1.5 1.5 0 0 0 1.5 14h11a1.5 1.5 0 0 0 1.5-1.5v-11A1.5 1.5 0 0 0 12.5 0z"
-        clipRule="evenodd"
-      />
-    </svg>
+    <LogoIcon
+      size={size}
+      className={className}
+      src={`${ICONS_16_FILL_BASE}/ds_ic_16_square_on_square.svg`}
+    />
   );
 };
 
@@ -1944,25 +1805,11 @@ export const CopyMessageIcon = ({
   className = defaultTailwindCSS,
 }: IconProps) => {
   return (
-    <svg
-      style={{ width: `${size}px`, height: `${size}px` }}
-      className={`w-[${size}px] h-[${size}px] ` + className}
-      xmlns="http://www.w3.org/2000/svg"
-      width="200"
-      height="200"
-      viewBox="0 0 24 24"
-    >
-      <g
-        fill="none"
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="1.5"
-      >
-        <path d="M18.327 7.286h-8.044a1.932 1.932 0 0 0-1.925 1.938v10.088c0 1.07.862 1.938 1.925 1.938h8.044a1.932 1.932 0 0 0 1.925-1.938V9.224c0-1.07-.862-1.938-1.925-1.938" />
-        <path d="M15.642 7.286V4.688c0-.514-.203-1.007-.564-1.37a1.918 1.918 0 0 0-1.361-.568H5.673c-.51 0-1 .204-1.36.568a1.945 1.945 0 0 0-.565 1.37v10.088c0 .514.203 1.007.564 1.37c.361.364.85.568 1.361.568h2.685" />
-      </g>
-    </svg>
+    <LogoIcon
+      size={size}
+      className={className}
+      src={`${ICONS_16_FILL_BASE}/ds_ic_16_mail_waves.svg`}
+    />
   );
 };
 
@@ -1997,14 +1844,26 @@ export const ThumbsUpIcon = ({
   size = 16,
   className = defaultTailwindCSS,
 }: IconProps) => {
-  return <FiThumbsUp size={size} className={className} />;
+  return (
+    <LogoIcon
+      size={size}
+      className={className}
+      src={`${ICONS_16_STROKE_BASE}/ds_ic_16_thumb_up.svg`}
+    />
+  );
 };
 
 export const RobotIcon = ({
   size = 16,
   className = defaultTailwindCSS,
 }: IconProps) => {
-  return <FaRobot size={size} className={className} />;
+  return (
+    <LogoIcon
+      size={size}
+      className={className}
+      src={`${ICONS_16_STROKE_BASE}/ds_ic_16_face_id.svg`}
+    />
+  );
 };
 
 export const SlackIconSkeleton = ({
@@ -2012,23 +1871,11 @@ export const SlackIconSkeleton = ({
   className = defaultTailwindCSS,
 }: IconProps) => {
   return (
-    <svg
-      style={{ width: `${size}px`, height: `${size}px` }}
-      className={`w-[${size}px] h-[${size}px] ` + className}
-      xmlns="http://www.w3.org/2000/svg"
-      width="200"
-      height="200"
-      viewBox="0 0 14 14"
-    >
-      <g fill="none" stroke="currentColor">
-        <path d="M5.5 2a.5.5 0 1 0 1 0a.5.5 0 1 0-1 0m6 4a.5.5 0 1 0 1 0a.5.5 0 1 0-1 0m-4 6a.5.5 0 1 0 1 0a.5.5 0 1 0-1 0m-6-4a.5.5 0 1 0 1 0a.5.5 0 1 0-1 0" />
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M8.793 1.219v4.937m-3.59 1.692v4.937M1.215 5.207h4.937m1.692 3.59h4.937"
-        />
-      </g>
-    </svg>
+    <LogoIcon
+      size={size}
+      className={className}
+      src={`${ICONS_16_STROKE_BASE}/ds_ic_16_speaker_waves.svg`}
+    />
   );
 };
 
@@ -2058,25 +1905,11 @@ export const ToolIconSkeleton = ({
   className = defaultTailwindCSS,
 }: IconProps) => {
   return (
-    <svg
-      style={{ width: `${size}px`, height: `${size}px` }}
-      className={`w-[${size}px] h-[${size}px] ` + className}
-      xmlns="http://www.w3.org/2000/svg"
-      width="200"
-      height="200"
-      viewBox="0 0 24 24"
-    >
-      <g
-        fill="none"
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="1.5"
-      >
-        <path d="M21.75 6.75a4.5 4.5 0 0 1-4.884 4.484c-1.076-.091-2.264.071-2.95.904l-7.152 8.684a2.548 2.548 0 1 1-3.586-3.586l8.684-7.152c.833-.686.995-1.874.904-2.95a4.5 4.5 0 0 1 6.336-4.486l-3.276 3.276a3.004 3.004 0 0 0 2.25 2.25l3.276-3.276c.256.565.398 1.192.398 1.852Z" />
-        <path d="M4.867 19.125h.008v.008h-.008v-.008Z" />
-      </g>
-    </svg>
+    <LogoIcon
+      size={size}
+      className={className}
+      src={`${ICONS_16_STROKE_BASE}/ds_ic_16_change_blocks.svg`}
+    />
   );
 };
 export const ToolIcon = ({
@@ -2107,23 +1940,11 @@ export const CpuIconSkeleton = ({
   className = defaultTailwindCSS,
 }: IconProps) => {
   return (
-    <svg
-      style={{ width: `${size}px`, height: `${size}px` }}
-      className={`w-[${size}px] h-[${size}px] ` + className}
-      xmlns="http://www.w3.org/2000/svg"
-      width="200"
-      height="200"
-      viewBox="0 0 24 24"
-    >
-      <path
-        fill="none"
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="1.5"
-        d="M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5m0 15V21m3.75-18v1.5m0 15V21m-9-1.5h10.5a2.25 2.25 0 0 0 2.25-2.25V6.75a2.25 2.25 0 0 0-2.25-2.25H6.75A2.25 2.25 0 0 0 4.5 6.75v10.5a2.25 2.25 0 0 0 2.25 2.25Zm.75-12h9v9h-9v-9Z"
-      />
-    </svg>
+    <LogoIcon
+      size={size}
+      className={className}
+      src={`${ICONS_16_STROKE_BASE}/ds_ic_16_graph.svg`}
+    />
   );
 };
 export const CpuIcon = ({
@@ -2156,23 +1977,11 @@ export const EmbeddingIconSkeleton = ({
   className = defaultTailwindCSS,
 }: IconProps) => {
   return (
-    <svg
-      style={{ width: `${size}px`, height: `${size}px` }}
-      className={`w-[${size}px] h-[${size}px] ` + className}
-      xmlns="http://www.w3.org/2000/svg"
-      width="200"
-      height="200"
-      viewBox="0 0 24 24"
-    >
-      <path
-        fill="none"
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="1.5"
-        d="M9 17.25v1.007a3 3 0 0 1-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0 1 15 18.257V17.25m6-12V15a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 15V5.25m18 0A2.25 2.25 0 0 0 18.75 3H5.25A2.25 2.25 0 0 0 3 5.25m18 0V12a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 12V5.25"
-      />
-    </svg>
+    <LogoIcon
+      size={size}
+      className={className}
+      src={`${ICONS_16_STROKE_BASE}/ds_ic_16_file_chart.svg`}
+    />
   );
 };
 
@@ -2181,21 +1990,11 @@ export const EmbeddingIcon = ({
   className = defaultTailwindCSS,
 }: IconProps) => {
   return (
-    <svg
-      style={{ width: `${size}px`, height: `${size}px` }}
-      className={`w-[${size}px] h-[${size}px] ` + className}
-      xmlns="http://www.w3.org/2000/svg"
-      width="200"
-      height="200"
-      viewBox="0 0 24 24"
-    >
-      <path
-        fill="currentColor"
-        fillRule="evenodd"
-        d="M2.25 5.25a3 3 0 0 1 3-3h13.5a3 3 0 0 1 3 3V15a3 3 0 0 1-3 3h-3v.257c0 .597.237 1.17.659 1.591l.621.622a.75.75 0 0 1-.53 1.28h-9a.75.75 0 0 1-.53-1.28l.621-.622a2.25 2.25 0 0 0 .659-1.59V18h-3a3 3 0 0 1-3-3V5.25Zm1.5 0v7.5a1.5 1.5 0 0 0 1.5 1.5h13.5a1.5 1.5 0 0 0 1.5-1.5v-7.5a1.5 1.5 0 0 0-1.5-1.5H5.25a1.5 1.5 0 0 0-1.5 1.5Z"
-        clipRule="evenodd"
-      />
-    </svg>
+    <LogoIcon
+      size={size}
+      className={className}
+      src={`${ICONS_16_FILL_BASE}/ds_ic_16_file_chart.svg`}
+    />
   );
 };
 
@@ -2204,23 +2003,11 @@ export const PackageIconSkeleton = ({
   className = defaultTailwindCSS,
 }: IconProps) => {
   return (
-    <svg
-      style={{ width: `${size}px`, height: `${size}px` }}
-      className={`w-[${size}px] h-[${size}px] ` + className}
-      xmlns="http://www.w3.org/2000/svg"
-      width="200"
-      height="200"
-      viewBox="0 0 24 24"
-    >
-      <path
-        fill="none"
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="1.5"
-        d="m20.25 7.5l-.625 10.632a2.25 2.25 0 0 1-2.247 2.118H6.622a2.25 2.25 0 0 1-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125Z"
-      />
-    </svg>
+    <LogoIcon
+      size={size}
+      className={className}
+      src={`${ICONS_16_STROKE_BASE}/ds_ic_16_banknote.svg`}
+    />
   );
 };
 export const PackageIcon = ({
@@ -2228,23 +2015,11 @@ export const PackageIcon = ({
   className = defaultTailwindCSS,
 }: IconProps) => {
   return (
-    <svg
-      style={{ width: `${size}px`, height: `${size}px` }}
-      className={`w-[${size}px] h-[${size}px] ` + className}
-      xmlns="http://www.w3.org/2000/svg"
-      width="200"
-      height="200"
-      viewBox="0 0 20 20"
-    >
-      <g fill="currentColor">
-        <path d="M2 3a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H2Z" />
-        <path
-          fillRule="evenodd"
-          d="M2 7.5h16l-.811 7.71a2 2 0 0 1-1.99 1.79H4.802a2 2 0 0 1-1.99-1.79L2 7.5ZM7 11a1 1 0 0 1 1-1h4a1 1 0 1 1 0 2H8a1 1 0 0 1-1-1Z"
-          clipRule="evenodd"
-        />
-      </g>
-    </svg>
+    <LogoIcon
+      size={size}
+      className={className}
+      src={`${ICONS_16_FILL_BASE}/ds_ic_16_banknote.svg`}
+    />
   );
 };
 export const UsersIconSkeleton = ({
@@ -2252,22 +2027,11 @@ export const UsersIconSkeleton = ({
   className = defaultTailwindCSS,
 }: IconProps) => {
   return (
-    <svg
-      style={{ width: `${size}px`, height: `${size}px` }}
-      className={`w-[${size}px] h-[${size}px] ` + className}
-      xmlns="http://www.w3.org/2000/svg"
-      width="200"
-      height="200"
-      viewBox="0 0 24 24"
-    >
-      <g fill="none" stroke="currentColor" strokeWidth="1.5">
-        <circle cx="12" cy="6" r="4" />
-        <path
-          strokeLinecap="round"
-          d="M19.997 18c.003-.164.003-.331.003-.5c0-2.485-3.582-4.5-8-4.5s-8 2.015-8 4.5S4 22 12 22c2.231 0 3.84-.157 5-.437"
-        />
-      </g>
-    </svg>
+    <LogoIcon
+      size={size}
+      className={className}
+      src={`${ICONS_16_STROKE_BASE}/ds_ic_16_user_plus.svg`}
+    />
   );
 };
 export const UsersIcon = ({
@@ -2275,19 +2039,11 @@ export const UsersIcon = ({
   className = defaultTailwindCSS,
 }: IconProps) => {
   return (
-    <svg
-      style={{ width: `${size}px`, height: `${size}px` }}
-      className={`w-[${size}px] h-[${size}px] ` + className}
-      xmlns="http://www.w3.org/2000/svg"
-      width="200"
-      height="200"
-      viewBox="0 0 16 16"
-    >
-      <path
-        fill="currentColor"
-        d="M8 8a3 3 0 1 0 0-6a3 3 0 0 0 0 6m4.735 6c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139z"
-      />
-    </svg>
+    <LogoIcon
+      size={size}
+      className={className}
+      src={`${ICONS_16_FILL_BASE}/ds_ic_16_user_plus.svg`}
+    />
   );
 
   // return <FiUser size={size} className={className} />;
@@ -2298,24 +2054,11 @@ export const GroupsIconSkeleton = ({
   className = defaultTailwindCSS,
 }: IconProps) => {
   return (
-    <svg
-      style={{ width: `${size}px`, height: `${size}px` }}
-      className={`w-[${size}px] h-[${size}px] ` + className}
-      xmlns="http://www.w3.org/2000/svg"
-      width="200"
-      height="200"
-      viewBox="0 0 24 24"
-    >
-      <g fill="none" stroke="currentColor" strokeWidth="1.5">
-        <circle cx="9" cy="6" r="4" />
-        <path strokeLinecap="round" d="M15 9a3 3 0 1 0 0-6" />
-        <ellipse cx="9" cy="17" rx="7" ry="4" />
-        <path
-          strokeLinecap="round"
-          d="M18 14c1.754.385 3 1.359 3 2.5c0 1.03-1.014 1.923-2.5 2.37"
-        />
-      </g>
-    </svg>
+    <LogoIcon
+      size={size}
+      className={className}
+      src={`${ICONS_16_STROKE_BASE}/ds_ic_16_mindmap.svg`}
+    />
   );
 };
 export const GroupsIcon = ({
@@ -2323,19 +2066,11 @@ export const GroupsIcon = ({
   className = defaultTailwindCSS,
 }: IconProps) => {
   return (
-    <svg
-      style={{ width: `${size}px`, height: `${size}px` }}
-      className={`w-[${size}px] h-[${size}px] ` + className}
-      xmlns="http://www.w3.org/2000/svg"
-      width="200"
-      height="200"
-      viewBox="0 0 16 16"
-    >
-      <path
-        fill="currentColor"
-        d="M8.5 4.5a2.5 2.5 0 1 1-5 0a2.5 2.5 0 0 1 5 0m2.4 7.506c.11.542-.348.994-.9.994H2c-.553 0-1.01-.452-.902-.994a5.002 5.002 0 0 1 9.803 0M14.002 12h-1.59a2.556 2.556 0 0 0-.04-.29a6.476 6.476 0 0 0-1.167-2.603a3.002 3.002 0 0 1 3.633 1.911c.18.522-.283.982-.836.982M12 8a2 2 0 1 0 0-4a2 2 0 0 0 0 4"
-      />
-    </svg>
+    <LogoIcon
+      size={size}
+      className={className}
+      src={`${ICONS_16_FILL_BASE}/ds_ic_16_mindmap.svg`}
+    />
   );
 };
 export const KeyIconSkeleton = ({
@@ -2343,23 +2078,11 @@ export const KeyIconSkeleton = ({
   className = defaultTailwindCSS,
 }: IconProps) => {
   return (
-    <svg
-      style={{ width: `${size}px`, height: `${size}px` }}
-      className={`w-[${size}px] h-[${size}px] ` + className}
-      xmlns="http://www.w3.org/2000/svg"
-      width="200"
-      height="200"
-      viewBox="0 0 24 24"
-    >
-      <path
-        fill="none"
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="1.5"
-        d="M15.75 5.25a3 3 0 0 1 3 3m3 0a6 6 0 0 1-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v2.25H6v2.25H2.25v-2.818c0-.597.237-1.17.659-1.591l6.499-6.499c.404-.404.527-1 .43-1.563A6 6 0 1 1 21.75 8.25Z"
-      />
-    </svg>
+    <LogoIcon
+      size={size}
+      className={className}
+      src={`${ICONS_16_STROKE_BASE}/ds_ic_16_keyboard_down.svg`}
+    />
   );
 };
 export const KeyIcon = ({
@@ -2389,23 +2112,11 @@ export const ShieldIconSkeleton = ({
   className = defaultTailwindCSS,
 }: IconProps) => {
   return (
-    <svg
-      style={{ width: `${size}px`, height: `${size}px` }}
-      className={`w-[${size}px] h-[${size}px] ` + className}
-      xmlns="http://www.w3.org/2000/svg"
-      width="200"
-      height="200"
-      viewBox="0 0 24 24"
-    >
-      <path
-        fill="none"
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="1.5"
-        d="M9 12.75L11.25 15L15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6A11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623c5.176-1.332 9-6.03 9-11.622c0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z"
-      />
-    </svg>
+    <LogoIcon
+      size={size}
+      className={className}
+      src={`${ICONS_16_STROKE_BASE}/ds_ic_16_shield_check.svg`}
+    />
   );
 };
 export const ShieldIcon = ({
@@ -2435,19 +2146,11 @@ export const DatabaseIconSkeleton = ({
   className = defaultTailwindCSS,
 }: IconProps) => {
   return (
-    <svg
-      style={{ width: `${size}px`, height: `${size}px` }}
-      className={`w-[${size}px] h-[${size}px] ` + className}
-      xmlns="http://www.w3.org/2000/svg"
-      width="200"
-      height="200"
-      viewBox="0 0 24 24"
-    >
-      <g fill="none" stroke="currentColor" strokeWidth="1.5">
-        <path strokeLinecap="round" d="M4 18V6m16 0v12" />
-        <path d="M12 10c4.418 0 8-1.79 8-4s-3.582-4-8-4s-8 1.79-8 4s3.582 4 8 4Zm8 2c0 2.21-3.582 4-8 4s-8-1.79-8-4m16 6c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
-      </g>
-    </svg>
+    <LogoIcon
+      size={size}
+      className={className}
+      src={`${ICONS_16_STROKE_BASE}/ds_ic_16_banknotes.svg`}
+    />
   );
 };
 export const DatabaseIcon = ({
@@ -2477,19 +2180,11 @@ export const SettingsIconSkeleton = ({
   className = defaultTailwindCSS,
 }: IconProps) => {
   return (
-    <svg
-      style={{ width: `${size}px`, height: `${size}px` }}
-      className={`w-[${size}px] h-[${size}px] ` + className}
-      xmlns="http://www.w3.org/2000/svg"
-      width="200"
-      height="200"
-      viewBox="0 0 24 24"
-    >
-      <g fill="none" stroke="currentColor" strokeWidth="1.5">
-        <path strokeLinecap="round" d="M4 18V6m16 0v12" />
-        <path d="M12 10c4.418 0 8-1.79 8-4s-3.582-4-8-4s-8 1.79-8 4s3.582 4 8 4Zm8 2c0 2.21-3.582 4-8 4s-8-1.79-8-4m16 6c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
-      </g>
-    </svg>
+    <LogoIcon
+      size={size}
+      className={className}
+      src={`${ICONS_16_STROKE_BASE}/ds_ic_16_graph_up_down.svg`}
+    />
   );
 };
 export const SettingsIcon = ({
@@ -2518,25 +2213,11 @@ export const PaintingIconSkeleton = ({
   className = defaultTailwindCSS,
 }: IconProps) => {
   return (
-    <svg
-      style={{ width: `${size}px`, height: `${size}px` }}
-      className={`w-[${size}px] h-[${size}px] ` + className}
-      xmlns="http://www.w3.org/2000/svg"
-      width="200"
-      height="200"
-      viewBox="0 0 14 14"
-    >
-      <g
-        fill="none"
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <path d="M1.5 12h11a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1h-11a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1" />
-        <path d="M9.502 6.212a1.245 1.245 0 1 0 0-2.49a1.245 1.245 0 0 0 0 2.49M9.083 12a7.098 7.098 0 0 0-7.136-5.786A7.6 7.6 0 0 0 .5 6.349" />
-        <path d="M13.5 8.94a7.716 7.716 0 0 0-5.506.225" />
-      </g>
-    </svg>
+    <LogoIcon
+      size={size}
+      className={className}
+      src={`${ICONS_16_STROKE_BASE}/ds_ic_16_paint.svg`}
+    />
   );
 };
 
@@ -2590,23 +2271,11 @@ export const StarIconSkeleton = ({
   className = defaultTailwindCSS,
 }: IconProps) => {
   return (
-    <svg
-      style={{ width: `${size}px`, height: `${size}px` }}
-      className={`w-[${size}px] h-[${size}px] ` + className}
-      xmlns="http://www.w3.org/2000/svg"
-      width="200"
-      height="200"
-      viewBox="0 0 24 24"
-    >
-      <path
-        fill="none"
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="1.5"
-        d="m14.92 8.797l-.624 1.86a4.75 4.75 0 0 1-3.029 3.03l-1.882.626a.316.316 0 0 0 0 .601l1.882.626a4.744 4.744 0 0 1 3.005 3.007l.625 1.883a.317.317 0 0 0 .6 0l.649-1.86a4.749 4.749 0 0 1 3.005-3.007l1.881-.625a.316.316 0 0 0 0-.601l-1.858-.65a4.744 4.744 0 0 1-3.028-3.03l-.625-1.884a.317.317 0 0 0-.6.024M6.859 3.516l-.446 1.329A3.392 3.392 0 0 1 4.25 7.01l-1.345.446a.226.226 0 0 0 0 .43l1.345.447a3.388 3.388 0 0 1 2.146 2.148l.446 1.345a.226.226 0 0 0 .43 0l.462-1.328A3.392 3.392 0 0 1 9.88 8.35l1.345-.447a.226.226 0 0 0 0-.43L9.897 7.01a3.388 3.388 0 0 1-2.163-2.165l-.446-1.346a.226.226 0 0 0-.43.017"
-      />
-    </svg>
+    <LogoIcon
+      size={size}
+      className={className}
+      src={`${ICONS_16_STROKE_BASE}/ds_ic_16_star.svg`}
+    />
   );
 };
 

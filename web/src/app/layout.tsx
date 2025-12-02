@@ -13,6 +13,7 @@ import {
 import { Metadata } from "next";
 import { buildClientUrl } from "@/lib/utilsSS";
 import { Inter } from "next/font/google";
+import localFont from "next/font/local";
 import {
   EnterpriseSettings,
   ApplicationStatus,
@@ -24,7 +25,6 @@ import { getAuthTypeMetadataSS, getCurrentUserSS } from "@/lib/userSS";
 import { Suspense } from "react";
 import PostHogPageView from "./PostHogPageView";
 import Script from "next/script";
-import { Hanken_Grotesk } from "next/font/google";
 import { WebVitals } from "./web-vitals";
 import { ThemeProvider } from "next-themes";
 import { DocumentsProvider } from "./chat/my-documents/DocumentsContext";
@@ -40,9 +40,35 @@ const inter = Inter({
   display: "swap",
 });
 
-const hankenGrotesk = Hanken_Grotesk({
-  subsets: ["latin"],
-  variable: "--font-hanken-grotesk",
+const sbSansText = localFont({
+  src: [
+    {
+      path: "../../public/fonts/SBSans  Sans Text Thin/SBSansText-Thin.woff2",
+      weight: "100",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/SBSans  Sans Text Light/SBSansText-Light.woff2",
+      weight: "300",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/SBSans  Sans Text Regular/SBSansText-Regular.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/SBSans Sans Text Semibold/SBSansText-Semibold.woff2",
+      weight: "600",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/SBSans Sans Text Bold/SBSansText-Bold.woff2",
+      weight: "700",
+      style: "normal",
+    },
+  ],
+  variable: "--font-sbsans-text",
   display: "swap",
 });
 
@@ -87,7 +113,7 @@ export default async function RootLayout({
   const getPageContent = async (content: React.ReactNode) => (
     <html
       lang="en"
-      className={`${inter.variable} ${hankenGrotesk.variable}`}
+      className={`${inter.variable} ${sbSansText.variable}`}
       suppressHydrationWarning
     >
       <head>

@@ -83,16 +83,17 @@
     --chart-3: 197 37% 24%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
-    --link: #3b82f6;
-    --link-hover: #1d4ed8;
+    /* Синий / небесный Сбер */
+    --link: #0087cd; /* Cиний Сбер */
+    --link-hover: #00adee; /* Небесный Сбер */
 
     /* Status, success, alerts, etc. */
-    --error: #f87171;
-    --undo: #ef4444;
-    --success: #030706;
-    --light-success: #22c55e;
-    --alert: #f59e0b;
-    --accent-hover: #4f46e5;
+    --error: #ff0066; /* Розовый Сбер */
+    --undo: #ff0066; /* Розовый Сбер */
+    --success: #00d900; /* Травяной Сбер */
+    --light-success: #21ba72; /* Изумрудный Сбер */
+    --alert: #faed00; /* Солнечный Сбер */
+    --accent-hover: #00adee; /* Небесный Сбер */
     --black: #000000;
     --white: #ffffff;
 
@@ -113,7 +114,7 @@
     --highlight-text: rgba(255, 245, 180, 0.5);
     --user-bubble: #f1eee8;
     --ai-bubble: #272a2d;
-    --document-color: #f43f5e;
+    --document-color: #ff0066; /* Розовый Сбер */
     --scrollbar-track: #f9fafb;
     --scrollbar-thumb: #e5e7eb;
     --scrollbar-thumb-hover: #d1d5db;
@@ -121,24 +122,25 @@
     --scrollbar-dark-thumb-hover: #c7cdd2;
 
     /* agent references */
-    --agent-sidebar: #be5d0e;
-    --agent-hovered: #d16b10;
-    --agent: #e47011;
-    --lighter-agent: #f59e0b;
+    --agent-sidebar: #ff8000; /* Оранжевый Сбер */
+    --agent-hovered: #faed00; /* Солнечный Сбер */
+    --agent: #ff8000; /* Оранжевый Сбер */
+    --lighter-agent: #a0e720; /* Весенний Сбер */
 
     /* Consolidated color variables */
     --neutral-100-border-light: #f5f5f5;
     --neutral-300-border-medium: #d4d4d4;
     --neutral-400-border-strong: #a3a3a3;
-    --background-input-background: #fefcfa;
-    --background-chatbar-sidebar: #f5f3ee;
-    --background-chat-hover-selected: #e6e3dd;
-    --white-card-popover: #ffffff;
+    /* Снежный Сбер для фоновых поверхностей */
+    --background-input-background: #eef3ff; /* Снежный Сбер */
+    --background-chatbar-sidebar: #eef3ff; /* Снежный Сбер */
+    --background-chat-hover-selected: #eef3ff; /* Снежный Сбер */
+    --white-card-popover: #ffffff; /* Белый */
     --card-popover-foreground: #0c0c0c;
 
     /* Near-duplicates consolidated */
     --neutral-200-border: #e5e6e6; /* Average of #e5e5e5 and #e5e7eb */
-    --off-white: #f3f1ec; /* Average of #f4f2ed, #f5f3ee, #f1eee8, #e9e6e0, #ebe7de */
+    --off-white: #eef3ff; /* Снежный Сбер */
 
     /* Update references to use new consolidated variables */
     --neutral-100: var(--neutral-100-border-light);
@@ -171,11 +173,12 @@
   }
 
   .dark {
-    --tremor-brand-faint: #eff6ff;
-    --tremor-brand-muted: #bfdbfe;
-    --tremor-brand-subtle: #60a5fa;
-    --tremor-brand-default: #3b82f6;
-    --tremor-brand-emphasis: #1d4ed8;
+    /* Tremor brand palette — приведено к оттенкам Сбера */
+    --tremor-brand-faint: #eef3ff; /* Снежный Сбер */
+    --tremor-brand-muted: #42e3b4; /* Арктический Сбер */
+    --tremor-brand-subtle: #21ba72; /* Изумрудный Сбер */
+    --tremor-brand-default: #00d900; /* Травяной Сбер */
+    --tremor-brand-emphasis: #0087cd; /* Cиний Сбер */
     --tremor-brand-inverted: #ffffff;
     --tremor-background-muted: #f9fafb;
     --tremor-background-subtle: #f3f4f6;
@@ -187,11 +190,11 @@
     --tremor-content-strong: #111827;
     --tremor-content-inverted: #ffffff;
 
-    --dark-tremor-brand-faint: #0b1229;
-    --dark-tremor-brand-muted: #172554;
-    --dark-tremor-brand-subtle: #1e40af;
-    --dark-tremor-brand-emphasis: #60a5fa;
-    --dark-tremor-brand-inverted: #030712;
+    --dark-tremor-brand-faint: #333f48; /* Графитовый Сбер */
+    --dark-tremor-brand-muted: #21ba72; /* Изумрудный Сбер */
+    --dark-tremor-brand-subtle: #42e3b4; /* Арктический Сбер */
+    --dark-tremor-brand-emphasis: #00d900; /* Травяной Сбер */
+    --dark-tremor-brand-inverted: #000000; /* Чёрный */
     --dark-tremor-background-muted: #131a2b;
     --dark-tremor-background-subtle: #1f2937;
     --dark-tremor-background-default: #111827;

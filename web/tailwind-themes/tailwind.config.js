@@ -56,8 +56,8 @@ module.exports = {
         "very-short": { raw: "(max-height: 600px)" },
       },
       fontFamily: {
-        sans: ["Hanken Grotesk", "var(--font-inter)", "sans-serif"],
-        hanken: ["Hanken Grotesk", "sans-serif"],
+        sans: ["var(--font-sbsans-text)", "var(--font-inter)", "sans-serif"],
+        hanken: ["var(--font-sbsans-text)", "sans-serif"],
       },
       width: {
         "message-xs": "450px",
