@@ -130,7 +130,9 @@ export async function renameItem(
   }
 }
 
-export async function downloadItem(documentId: string): Promise<Blob> {
+export async function downloadItem(
+  documentId: string
+): Promise<{ blob: Blob; fileName?: string }> {
   const response = await fetch(
     `/api/chat/file/${encodeURIComponent(documentId)}`,
     {
@@ -140,5 +142,17 @@ export async function downloadItem(documentId: string): Promise<Blob> {
   if (!response.ok) {
     throw new Error("Failed to fetch file");
   }
-  return response.blob();
+  
+  // Try to extract filename from Content-Disposition header
+  const contentDisposition = response.headers.get("Content-Disposition");
+  let fileName: string | undefined;
+  
+  if (contentDisposition) {
+    const fileNameMatch = contentDisposition.match(/filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/);
+    if (fileNameMatch && fileNameMatch[1]) {
+      fileName = fileNameMatch[1].replace(/['"]/g, "");
+    }
+  }
+  
+  return { blob: await response.blob(), fileName };
 }

@@ -360,18 +360,23 @@ export default function UserFolderContent({ folderId }: { folderId: number }) {
           message: t(k.ITEM_DELETED_SUCCESS, { itemType: deleteItemType }),
           type: "success",
         });
+        // Refresh folder details after successful deletion
         await refreshFolderDetails();
-      } catch (error) {
+      } catch (error: any) {
         console.error(t(k.ITEM_DELETION_ERROR), error);
+        const errorMessage = error?.message || error?.toString() || "";
         setPopup({
-          message: t(k.FAILED_TO_DELETE_ITEM, {
+          message: `${t(k.FAILED_TO_DELETE_ITEM, {
             itemType: deleteItemType,
-          }),
+          })}${errorMessage ? `: ${errorMessage}` : ""}`,
           type: "error",
         });
+      } finally {
+        setIsDeleteModalOpen(false);
       }
+    } else {
+      setIsDeleteModalOpen(false);
     }
-    setIsDeleteModalOpen(false);
   };
 
   const handleMoveFolder = () => {
@@ -769,10 +774,12 @@ export default function UserFolderContent({ folderId }: { folderId: number }) {
           files={folderDetails.files}
           onRename={handleRenameItem}
           onDelete={handleDeleteItem}
-          onDownload={async (documentId: string) => {
-            const blob = await downloadItem(documentId);
-            const url = URL.createObjectURL(blob);
-            window.open(url, "_blank");
+          onDownload={async (documentId: string, fileName?: string) => {
+            try {
+              await downloadItem(documentId, fileName);
+            } catch (error) {
+              console.error("Failed to download file:", error);
+            }
           }}
           onUpload={handleUpload}
           onMove={handleMoveFile}

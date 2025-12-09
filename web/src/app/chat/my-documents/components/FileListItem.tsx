@@ -51,7 +51,7 @@ interface FileListItemProps {
     isFolder: boolean
   ) => Promise<void>;
   onDelete: (itemId: number, isFolder: boolean, itemName: string) => void;
-  onDownload: (documentId: string) => Promise<void>;
+  onDownload: (documentId: string, fileName?: string) => Promise<void>;
   onMove: (fileId: number, targetFolderId: number) => Promise<void>;
   folders: FolderResponse[];
 
@@ -288,7 +288,7 @@ export const FileListItem: React.FC<FileListItemProps> = ({
                 </Button>
                 <Button
                   variant="menu"
-                  onClick={() => onDownload(file.document_id)}
+                  onClick={() => onDownload(file.document_id, file.name)}
                 >
                   <FiDownload className="h-4 w-4" />
                   {t(k.DOWNLOAD)}

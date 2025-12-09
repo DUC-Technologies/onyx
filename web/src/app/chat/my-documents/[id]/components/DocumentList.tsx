@@ -48,7 +48,7 @@ interface DocumentListProps {
     isFolder: boolean
   ) => Promise<void>;
   onDelete: (itemId: number, isFolder: boolean, itemName: string) => void;
-  onDownload: (documentId: string) => Promise<void>;
+  onDownload: (documentId: string, fileName?: string) => Promise<void>;
   onUpload: (files: File[]) => void;
   onMove: (fileId: number, targetFolderId: number) => Promise<void>;
   folders: FolderResponse[];

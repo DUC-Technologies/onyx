@@ -206,9 +206,9 @@ export default function MyDocuments() {
     }
   };
 
-  const handleDownloadItem = async (documentId: string) => {
+  const handleDownloadItem = async (documentId: string, fileName?: string) => {
     try {
-      await downloadItem(documentId);
+      await downloadItem(documentId, fileName);
     } catch (error) {
       console.error("Error downloading file:", error);
       setPopup({

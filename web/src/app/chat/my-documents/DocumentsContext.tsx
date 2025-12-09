@@ -91,7 +91,7 @@ export interface DocumentsContextType {
     fileIds: number[]
   ) => Promise<Record<number, boolean>>;
   getFolderDetails: (folderId: number) => Promise<FolderResponse>;
-  downloadItem: (documentId: string) => Promise<Blob>;
+  downloadItem: (documentId: string, fileName?: string) => Promise<Blob>;
   renameItem: (
     itemId: number,
     newName: string,
@@ -270,13 +270,30 @@ export const DocumentsProvider: React.FC<DocumentsProviderProps> = ({
   };
 
   const downloadItem = useCallback(
-    async (documentId: string): Promise<Blob> => {
+    async (documentId: string, fileName?: string): Promise<Blob> => {
       try {
-        const blob = await documentsService.downloadItem(documentId);
+        const { blob, fileName: headerFileName } = await documentsService.downloadItem(documentId);
         const url = window.URL.createObjectURL(blob);
         const link = document.createElement("a");
         link.href = url;
-        link.download = "document";
+        
+        // Use filename from header, then provided fileName, then fallback
+        let downloadFileName = headerFileName || fileName || "document";
+        
+        // Clean up filename - remove any USER_FILE_CONNECTOR patterns
+        downloadFileName = downloadFileName.replace(/USER_FILE_CONNECTOR[^/]*\//g, "");
+        
+        // If filename still looks like a GUID or path, use the provided fileName
+        if (!downloadFileName || downloadFileName === "document" || downloadFileName.includes("/")) {
+          downloadFileName = fileName || "document";
+        }
+        
+        // Ensure we have a valid filename
+        if (!downloadFileName || downloadFileName.trim() === "") {
+          downloadFileName = "document";
+        }
+        
+        link.download = downloadFileName;
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);

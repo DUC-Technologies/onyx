@@ -171,7 +171,7 @@ export function FolderItem({
 interface FileItemProps {
   file: { name: string; id: number; document_id: string };
   onDeleteItem: (itemId: number, isFolder: boolean) => void;
-  onDownloadItem: (documentId: string) => void;
+  onDownloadItem: (documentId: string, fileName?: string) => void;
   onMoveItem: (fileId: number) => void;
   editingItem: { id: number; name: string; isFolder: boolean } | null;
   setEditingItem: React.Dispatch<
@@ -306,7 +306,7 @@ export function FileItem({
             className="block w-full text-left px-4 py-2 hover:bg-background-100 text-sm"
             onClick={(e) => {
               e.stopPropagation();
-              onDownloadItem(file.document_id);
+              onDownloadItem(file.document_id, file.name);
               setShowMenu(undefined);
             }}
           >
