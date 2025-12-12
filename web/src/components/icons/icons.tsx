@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import { StaticImageData } from "next/image";
 import jiraSVG from "../../../public/Jira.svg";
 import confluenceSVG from "../../../public/Confluence.svg";
@@ -71,6 +72,60 @@ export interface LogoIconProps extends IconProps {
 const ICONS_16_STROKE_BASE = "/icons/16%20Stroke";
 const ICONS_16_FILL_BASE = "/icons/16%20Fill";
 
+// Component for SVG icons that need to inherit color
+export const SvgIcon = ({
+  size = 16,
+  className = defaultTailwindCSS,
+  src,
+}: LogoIconProps) => {
+  const [svgContent, setSvgContent] = React.useState<string | null>(null);
+
+  React.useEffect(() => {
+    if (typeof src === "string" && src.endsWith(".svg")) {
+      fetch(src)
+        .then((res) => res.text())
+        .then((text) => {
+          // Replace fill="black" and fill="#000000" with fill="currentColor"
+          const modified = text
+            .replace(/fill="black"/gi, 'fill="currentColor"')
+            .replace(/fill="#000000"/gi, 'fill="currentColor"')
+            .replace(/fill="#000"/gi, 'fill="currentColor"')
+            .replace(/fill="none"/gi, 'fill="none"'); // Keep fill="none" as is
+          setSvgContent(modified);
+        })
+        .catch(() => {
+          // Fallback to Image if fetch fails
+          setSvgContent(null);
+        });
+    } else {
+      setSvgContent(null);
+    }
+  }, [src]);
+
+  // If it's not an SVG or fetch failed, use Image component
+  if (!svgContent || typeof src !== "string" || !src.endsWith(".svg")) {
+    return (
+      <Image
+        style={{ width: `${size}px`, height: `${size}px` }}
+        className={`w-[${size}px] h-[${size}px] ` + className}
+        src={src}
+        alt="Logo"
+        width="96"
+        height="96"
+      />
+    );
+  }
+
+  // Render inline SVG with modified content
+  return (
+    <div
+      style={{ width: `${size}px`, height: `${size}px` }}
+      className={`w-[${size}px] h-[${size}px] ` + className}
+      dangerouslySetInnerHTML={{ __html: svgContent }}
+    />
+  );
+};
+
 export const OpenAIISVG = ({
   size = 16,
   className = defaultTailwindCSS,
@@ -96,16 +151,26 @@ export const LogoIcon = ({
   size = 16,
   className = defaultTailwindCSS,
   src,
-}: LogoIconProps) => (
-  <Image
-    style={{ width: `${size}px`, height: `${size}px` }}
-    className={`w-[${size}px] h-[${size}px] ` + className}
-    src={src}
-    alt="Logo"
-    width="96"
-    height="96"
-  />
-);
+}: LogoIconProps) => {
+  // Use SvgIcon for SVG files to enable color inheritance
+  if (typeof src === "string" && src.endsWith(".svg")) {
+    return (
+      <SvgIcon size={size} className={className} src={src} />
+    );
+  }
+  
+  // Use Image for non-SVG files (PNG, etc.)
+  return (
+    <Image
+      style={{ width: `${size}px`, height: `${size}px` }}
+      className={`w-[${size}px] h-[${size}px] ` + className}
+      src={src}
+      alt="Logo"
+      width="96"
+      height="96"
+    />
+  );
+};
 
 export const AssistantsIconSkeleton = ({
   size,
